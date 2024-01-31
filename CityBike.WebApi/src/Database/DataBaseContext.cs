@@ -5,16 +5,10 @@ using Npgsql;
 
 namespace CityBike.WebApi.src.Database
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext(DbContextOptions options) : DbContext(options)
     {
         public DbSet<Station> Stations { get; set; }
         public DbSet<Journey> Journeys { get; set; }
-
-
-        public DataBaseContext(DbContextOptions options) : base(options)
-        {
-
-        }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
