@@ -22,7 +22,7 @@ namespace CityBike.Controller.Controller
         }
 
         [HttpDelete("{id}")]
-        public virtual async Task<ActionResult<bool>> DeleteOneAsync([FromRoute] Guid id)
+        public virtual async Task<ActionResult<bool>> DeleteOneAsync([FromRoute] int id)
         {
             var result = await _service.DeleteOneAsync(id);
 
@@ -38,7 +38,7 @@ namespace CityBike.Controller.Controller
         }
 
         [HttpGet("{id}")]
-        public virtual async Task<ActionResult<TReadDTO>> GetByIdAsync([FromRoute] Guid id)
+        public virtual async Task<ActionResult<TReadDTO>> GetByIdAsync([FromRoute] int id)
         {
             var result = await _service.GetByIdAsync(id);
 
@@ -46,7 +46,7 @@ namespace CityBike.Controller.Controller
         }
 
         [HttpPatch("{id}")]
-        public virtual async Task<ActionResult<TReadDTO>> UpdateOneAsync([FromRoute] Guid id, [FromBody] TUpdateDTO updateDTO)
+        public virtual async Task<ActionResult<TReadDTO>> UpdateOneAsync([FromRoute] int id, [FromBody] TUpdateDTO updateDTO)
         {
             var result = await _service.UpdateOneAsync(id, updateDTO);
 

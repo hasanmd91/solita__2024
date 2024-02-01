@@ -6,7 +6,7 @@ using CityBike.Service.src.DTO;
 
 namespace CityBike.Service.src.Service
 {
-    public class StationService(IBaseRepo<Station> repo, IMapper mapper) : BaseService<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>(repo, mapper), IStationService
+    public class StationService(IStationRepo repo, IMapper mapper) : BaseService<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>(repo, mapper), IStationService
     {
     }
 }

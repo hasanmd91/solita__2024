@@ -6,7 +6,7 @@ namespace CityBike.Core.src.Abstraction
     {
         Task<IEnumerable<T>> GetAllAsync(GetAllOptions options);
         Task<int> GetTotal(GetAllOptions options);
-        Task<T?> GetByIdAsync(Guid id);
+        Task<T?> GetByIdAsync(int id);
         Task<T> CreateOneAsync(T createObject);
         Task<T> UpdateOneAsync(T updateObject);
         Task<bool> DeleteOneAsync(T deleteObject);

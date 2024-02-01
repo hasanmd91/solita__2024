@@ -38,7 +38,7 @@ namespace CityBike.WebApi.src.Repository
 
         }
 
-        public virtual async Task<T?> GetByIdAsync(Guid id)
+        public virtual async Task<T?> GetByIdAsync(int id)
         {
             var result = await _data.FindAsync(id);
 

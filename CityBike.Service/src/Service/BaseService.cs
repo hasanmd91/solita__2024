@@ -7,7 +7,7 @@ using CityBike.Service.src.Shared;
 
 namespace CityBike.Service.src.Service
 {
-    public class BaseService<T, TReadDTO, TCreateDTO, TUpdateDTO>(IBaseRepo<T> repo, IMapper mapper) : IBaseService<T, TReadDTO, TCreateDTO, TUpdateDTO> where T : class
+    public class BaseService<T, TReadDTO, TCreateDTO, TUpdateDTO>(IBaseRepo<T> repo, IMapper mapper) : IBaseService<T, TReadDTO, TCreateDTO, TUpdateDTO>
     {
         protected readonly IBaseRepo<T> _repo = repo;
         protected readonly IMapper _mapper = mapper;
@@ -20,7 +20,7 @@ namespace CityBike.Service.src.Service
             return _mapper.Map<T, TReadDTO>(createdObject);
         }
 
-        public virtual async Task<bool> DeleteOneAsync(Guid id)
+        public virtual async Task<bool> DeleteOneAsync(int id)
         {
             var deleteObject = await _repo.GetByIdAsync(id)
               ?? throw CustomException.NotFound();
@@ -45,7 +45,7 @@ namespace CityBike.Service.src.Service
             return result;
         }
 
-        public virtual async Task<TReadDTO> GetByIdAsync(Guid id)
+        public virtual async Task<TReadDTO> GetByIdAsync(int id)
         {
             var result = await _repo.GetByIdAsync(id)
               ?? throw CustomException.NotFound();
@@ -53,7 +53,7 @@ namespace CityBike.Service.src.Service
             return _mapper.Map<T, TReadDTO>(result);
         }
 
-        public virtual async Task<TReadDTO> UpdateOneAsync(Guid id, TUpdateDTO updateDTO)
+        public virtual async Task<TReadDTO> UpdateOneAsync(int id, TUpdateDTO updateDTO)
         {
             var originalEntity = await _repo.GetByIdAsync(id)
               ?? throw CustomException.NotFound();

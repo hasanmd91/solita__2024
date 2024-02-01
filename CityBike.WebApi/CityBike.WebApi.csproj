@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="EFCore.NamingConventions" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.1" />
@@ -18,6 +19,7 @@
   <ItemGroup>
     <ProjectReference Include="..\CityBike.Controller\CityBike.Controller.csproj" />
     <ProjectReference Include="..\CityBike.Core\CityBike.Core.csproj" />
+    <ProjectReference Include="..\CityBike.Service\CityBike.Service.csproj" />
   </ItemGroup>
 
 </Project>
