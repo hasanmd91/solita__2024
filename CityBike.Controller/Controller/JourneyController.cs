@@ -5,8 +5,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CityBike.Controller.Controller
 {
-    [Route("[controller]")]
-    public class JourneyController(IBaseService<Journey, JourneyReadDTO, JourneyCreateDTO, JourneyUpdateDTO> service) : BaseController<Journey, JourneyReadDTO, JourneyCreateDTO, JourneyUpdateDTO>(service)
+    [Route("api/v1/[controller]")]
+    public class JourneyController(IJourneyService service) : BaseController<Journey, JourneyReadDTO, JourneyCreateDTO, JourneyUpdateDTO>(service)
     {
     }
 }

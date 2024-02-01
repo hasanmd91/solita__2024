@@ -1,12 +1,13 @@
 using CityBike.Core.src.Entity;
 using CityBike.Service.src.Abstraction;
 using CityBike.Service.src.DTO;
+using CityBike.Service.src.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CityBike.Controller.Controller
 {
     [Route("api/v1/[controller]")]
-    public class StationController(IBaseService<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO> service) : BaseController<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>(service)
+    public class StationController(StationService service) : BaseController<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>(service)
     {
     }
 }
