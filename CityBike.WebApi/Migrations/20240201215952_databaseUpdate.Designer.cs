@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CityBike.WebApi.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240201200743_databaseUpdate")]
+    [Migration("20240201215952_databaseUpdate")]
     partial class databaseUpdate
     {
         /// <inheritdoc />
@@ -77,6 +77,16 @@ namespace CityBike.WebApi.Migrations
                         .IsRequired()
                         .HasColumnType("text")
                         .HasColumnName("address");
+
+                    b.Property<string>("Capacity")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("capacity");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("city");
 
                     b.Property<string>("Name")
                         .IsRequired()

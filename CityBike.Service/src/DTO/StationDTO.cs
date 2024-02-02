@@ -6,6 +6,8 @@ namespace CityBike.Service.src.DTO
         public int Id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public string City { get; set; }
+        public string Capacity { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
     }
@@ -15,6 +17,8 @@ namespace CityBike.Service.src.DTO
     {
         public string Name { get; set; }
         public string Address { get; set; }
+        public string City { get; set; }
+        public string Capacity { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
     }
@@ -24,6 +28,8 @@ namespace CityBike.Service.src.DTO
     {
         public string Name { get; set; }
         public string Address { get; set; }
+        public string City { get; set; }
+        public string Capacity { get; set; }
         public string X { get; set; }
         public string Y { get; set; }
     }

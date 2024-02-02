@@ -75,6 +75,16 @@ namespace CityBike.WebApi.Migrations
                         .HasColumnType("text")
                         .HasColumnName("address");
 
+                    b.Property<string>("Capacity")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("capacity");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("city");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")

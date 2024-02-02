@@ -38,6 +38,8 @@ namespace CityBike.WebApi.Migrations
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     name = table.Column<string>(type: "text", nullable: false),
                     address = table.Column<string>(type: "text", nullable: false),
+                    city = table.Column<string>(type: "text", nullable: false),
+                    capacity = table.Column<string>(type: "text", nullable: false),
                     x = table.Column<string>(type: "text", nullable: false),
                     y = table.Column<string>(type: "text", nullable: false)
                 },
