@@ -1,3 +1,4 @@
+using System.Linq;
 using CityBike.Core.src.Abstraction;
 using CityBike.Core.src.Shared;
 using CityBike.WebApi.src.Database;
@@ -28,9 +29,7 @@ namespace CityBike.WebApi.src.Repository
 
         public virtual async Task<IEnumerable<T>> GetAllAsync(GetAllOptions options)
         {
-
             var entities = await _data
-                                .AsNoTracking()
                                 .Skip(options.Offset)
                                 .Take(options.Limit)
                                 .ToArrayAsync();

@@ -11,13 +11,15 @@ namespace CityBike.Service.src.Shared
             CreateMap<Station, StationReadDTO>();
             CreateMap<StationCreateDTO, Station>();
             CreateMap<StationUpdateDTO, Station>()
-            .ForAllMembers(opt => opt.Condition((src, dest, member) => member != null));
+                .ForAllMembers(opt => opt.Condition((src, dest, member) => member != null));
 
-            CreateMap<Journey, JourneyReadDTO>();
+            CreateMap<Journey, JourneyReadDTO>()
+                .ForMember(dest => dest.DepartureStationName, opt => opt.MapFrom(src => src.DepartureStation.Name))
+                .ForMember(dest => dest.ReturnStationName, opt => opt.MapFrom(src => src.ReturnStation.Name));
+
             CreateMap<JourneyCreateDTO, Journey>();
             CreateMap<JourneyUpdateDTO, Journey>()
-            .ForAllMembers(opt => opt.Condition((src, dest, member) => member != null));
-
+                .ForAllMembers(opt => opt.Condition((src, dest, member) => member != null));
         }
     }
 }

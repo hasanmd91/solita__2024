@@ -23,7 +23,7 @@ namespace CityBike.Service.src.Service
         public virtual async Task<bool> DeleteOneAsync(int id)
         {
             var deleteObject = await _repo.GetByIdAsync(id)
-              ?? throw CustomException.NotFound();
+              ?? throw CustomException.NotFound($"Data not found for ID: {id}");
 
             var result = await _repo.DeleteOneAsync(deleteObject);
 
@@ -48,7 +48,7 @@ namespace CityBike.Service.src.Service
         public virtual async Task<TReadDTO> GetByIdAsync(int id)
         {
             var result = await _repo.GetByIdAsync(id)
-              ?? throw CustomException.NotFound();
+              ?? throw CustomException.NotFound($"Data not found for ID: {id}");
 
             return _mapper.Map<T, TReadDTO>(result);
         }
@@ -56,7 +56,7 @@ namespace CityBike.Service.src.Service
         public virtual async Task<TReadDTO> UpdateOneAsync(int id, TUpdateDTO updateDTO)
         {
             var originalEntity = await _repo.GetByIdAsync(id)
-              ?? throw CustomException.NotFound();
+              ?? throw CustomException.NotFound($"Data not found for ID: {id}");
 
             var updatedEntity = _mapper.Map(updateDTO, originalEntity);
 

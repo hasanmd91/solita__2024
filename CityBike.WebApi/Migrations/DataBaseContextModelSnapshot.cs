@@ -58,6 +58,12 @@ namespace CityBike.WebApi.Migrations
                     b.HasKey("Id")
                         .HasName("pk_journeys");
 
+                    b.HasIndex("DepartureStationId")
+                        .HasDatabaseName("ix_journeys_departure_station_id");
+
+                    b.HasIndex("ReturnStationId")
+                        .HasDatabaseName("ix_journeys_return_station_id");
+
                     b.ToTable("journeys", (string)null);
                 });
 
@@ -75,9 +81,8 @@ namespace CityBike.WebApi.Migrations
                         .HasColumnType("text")
                         .HasColumnName("address");
 
-                    b.Property<string>("Capacity")
-                        .IsRequired()
-                        .HasColumnType("text")
+                    b.Property<int>("Capacity")
+                        .HasColumnType("integer")
                         .HasColumnName("capacity");
 
                     b.Property<string>("City")
@@ -104,6 +109,34 @@ namespace CityBike.WebApi.Migrations
                         .HasName("pk_stations");
 
                     b.ToTable("stations", (string)null);
+                });
+
+            modelBuilder.Entity("CityBike.Core.src.Entity.Journey", b =>
+                {
+                    b.HasOne("CityBike.Core.src.Entity.Station", "DepartureStation")
+                        .WithMany("DepartureJourneys")
+                        .HasForeignKey("DepartureStationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_journeys_stations_departure_station_id");
+
+                    b.HasOne("CityBike.Core.src.Entity.Station", "ReturnStation")
+                        .WithMany("ReturnJourneys")
+                        .HasForeignKey("ReturnStationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("fk_journeys_stations_return_station_id");
+
+                    b.Navigation("DepartureStation");
+
+                    b.Navigation("ReturnStation");
+                });
+
+            modelBuilder.Entity("CityBike.Core.src.Entity.Station", b =>
+                {
+                    b.Navigation("DepartureJourneys");
+
+                    b.Navigation("ReturnJourneys");
                 });
 #pragma warning restore 612, 618
         }
