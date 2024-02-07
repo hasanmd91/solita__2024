@@ -8,16 +8,10 @@ using CityBike.Service.src.Shared;
 
 namespace CityBike.Service.src.Service
 {
-    public class StationService : BaseService<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>, IStationService
+    public class StationService(IStationRepo stationRepo, IJourneyRepo journeyRepo, IMapper mapper) : BaseService<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>(stationRepo, mapper), IStationService
     {
-        private readonly IStationRepo stationRepo;
-        private readonly IJourneyRepo journeyRepo;
-
-        public StationService(IStationRepo stationRepo, IJourneyRepo journeyRepo, IMapper mapper) : base(stationRepo, mapper)
-        {
-            this.stationRepo = stationRepo;
-            this.journeyRepo = journeyRepo;
-        }
+        private readonly IStationRepo stationRepo = stationRepo;
+        private readonly IJourneyRepo journeyRepo = journeyRepo;
 
         public async Task<StationMetricsDTO> GetStationMetricsAsync(int stationId)
         {

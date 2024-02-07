@@ -1,7 +1,6 @@
 using CityBike.Core.src.Entity;
 using CityBike.Service.src.Abstraction;
 using CityBike.Service.src.DTO;
-using CityBike.Service.src.Service;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CityBike.Controller.Controller

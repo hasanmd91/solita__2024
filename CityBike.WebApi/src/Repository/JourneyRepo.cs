@@ -33,15 +33,15 @@ namespace CityBike.WebApi.src.Repository
 
             return (orderBy?.ToLower()) switch
             {
-                "departuredatetime" => descending
+                "departureDateTime" => descending
                     ? journeys.OrderByDescending(j => j.DepartureDateTime)
                     : journeys.OrderBy(j => j.DepartureDateTime),
 
-                "returndatetime" => descending
+                "returnDateTime" => descending
                     ? journeys.OrderByDescending(j => j.ReturnDateTime)
                     : journeys.OrderBy(j => j.ReturnDateTime),
 
-                "covereddistance" => descending
+                "coveredDistance" => descending
                     ? journeys.OrderByDescending(j => j.CoveredDistance)
                     : journeys.OrderBy(j => j.CoveredDistance),
 
