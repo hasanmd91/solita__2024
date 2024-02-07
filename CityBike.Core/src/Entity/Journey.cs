@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace CityBike.Core.src.Entity
 {
     public class Journey
@@ -10,7 +8,7 @@ namespace CityBike.Core.src.Entity
         public int DepartureStationId { get; set; }
         public required Station DepartureStation { get; set; }
         public int ReturnStationId { get; set; }
-        public Station ReturnStation { get; set; }
+        public required Station ReturnStation { get; set; }
         public int CoveredDistance { get; set; }
         public int Duration { get; set; }
     }

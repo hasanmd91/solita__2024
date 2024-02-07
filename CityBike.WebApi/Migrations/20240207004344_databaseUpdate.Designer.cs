@@ -3,6 +3,7 @@ using System;
 using CityBike.WebApi.src.Database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CityBike.WebApi.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    [Migration("20240207004344_databaseUpdate")]
+    partial class databaseUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +43,7 @@ namespace CityBike.WebApi.Migrations
                         .HasColumnName("departure_date_time");
 
                     b.Property<int>("DepartureStationId")
-                        .HasColumnType("serial")
+                        .HasColumnType("integer")
                         .HasColumnName("departure_station_id");
 
                     b.Property<int>("Duration")
@@ -52,7 +55,7 @@ namespace CityBike.WebApi.Migrations
                         .HasColumnName("return_date_time");
 
                     b.Property<int>("ReturnStationId")
-                        .HasColumnType("serial")
+                        .HasColumnType("integer")
                         .HasColumnName("return_station_id");
 
                     b.HasKey("Id")
@@ -71,9 +74,8 @@ namespace CityBike.WebApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("serial")
-                        .HasColumnName("id")
-                        .HasColumnOrder(1);
+                        .HasColumnType("integer")
+                        .HasColumnName("id");
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 

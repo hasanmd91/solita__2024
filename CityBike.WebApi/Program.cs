@@ -21,6 +21,11 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "CityBike", Version = "v1" });
 });
+builder.Services.AddMvc(options =>
+{
+    options.SuppressAsyncSuffixInActionNames = false;
+});
+
 
 builder.Services.AddScoped<IStationRepo, StationRepo>();
 builder.Services.AddScoped<IJourneyRepo, JourneyRepo>();

@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CityBike.WebApi.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20240206080714_databaseUpdate")]
-    partial class databaseUpdate
+    [Migration("20240207004726_databaseUpdate1")]
+    partial class databaseUpdate1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace CityBike.WebApi.Migrations
                         .HasColumnName("departure_date_time");
 
                     b.Property<int>("DepartureStationId")
-                        .HasColumnType("integer")
+                        .HasColumnType("serial")
                         .HasColumnName("departure_station_id");
 
                     b.Property<int>("Duration")
@@ -55,7 +55,7 @@ namespace CityBike.WebApi.Migrations
                         .HasColumnName("return_date_time");
 
                     b.Property<int>("ReturnStationId")
-                        .HasColumnType("integer")
+                        .HasColumnType("serial")
                         .HasColumnName("return_station_id");
 
                     b.HasKey("Id")
@@ -74,8 +74,9 @@ namespace CityBike.WebApi.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasColumnName("id");
+                        .HasColumnType("serial")
+                        .HasColumnName("id")
+                        .HasColumnOrder(1);
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
