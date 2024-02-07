@@ -6,5 +6,7 @@ namespace CityBike.WebApi.src.Repository
 {
     public class StationRepo(DataBaseContext dataBaseContext) : BaseRepo<Station>(dataBaseContext), IStationRepo
     {
+
     }
+
 }

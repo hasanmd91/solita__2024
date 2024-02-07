@@ -5,6 +5,7 @@ namespace CityBike.Service.src.Abstraction
 {
     public interface IStationService : IBaseService<Station, StationReadDTO, StationCreateDTO, StationUpdateDTO>
     {
+        public Task<StationMetricsDTO> GetStationMetricsAsync(int stationId);
 
     }
 }

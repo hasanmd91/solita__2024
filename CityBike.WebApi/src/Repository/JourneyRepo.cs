@@ -25,7 +25,6 @@ namespace CityBike.WebApi.src.Repository
                                 .Take(options.Limit)
                                 .ToArrayAsync();
             return entities;
-
         }
 
         private static IQueryable<Journey> ApplyOrderBy(IQueryable<Journey> journeys, string? orderBy = "departureDateTime", string sortDirection = "desc")
@@ -54,8 +53,45 @@ namespace CityBike.WebApi.src.Repository
             };
         }
 
+        public async Task<int> GetTotalDeparturesFromStationAsync(int stationId)
+        {
+            return await _data.CountAsync(j => j.DepartureStationId == stationId);
+        }
 
+        public async Task<int> GetTotalArrivalsToStationAsync(int stationId)
+        {
+            return await _data.CountAsync(j => j.ReturnStationId == stationId);
+        }
 
+        public async Task<int> GetAverageDistanceFromStationAsync(int stationId)
+        {
+            return (int)await _data.Where(j => j.DepartureStationId == stationId).AverageAsync(j => j.CoveredDistance);
+        }
 
+        public async Task<int> GetAverageDurationFromStationAsync(int stationId)
+        {
+            return (int)await _data.Where(j => j.DepartureStationId == stationId).AverageAsync(j => j.Duration);
+        }
+        public async Task<List<int>> GetTop5PopularReturnStationsAsync(int startingStationId)
+        {
+            return await _data
+                   .Where(j => j.DepartureStationId == startingStationId)
+                   .GroupBy(j => j.ReturnStationId)
+                   .OrderByDescending(g => g.Count())
+                   .Select(g => g.Key)
+                   .Take(5)
+                   .ToListAsync();
+        }
+
+        public async Task<List<int>> GetTop5PopularDepartureStationsAsync(int endingStationId)
+        {
+            return await _data
+                .Where(j => j.ReturnStationId == endingStationId)
+                .GroupBy(j => j.DepartureStationId)
+                .OrderByDescending(g => g.Count())
+                .Select(g => g.Key)
+                .Take(5)
+                .ToListAsync();
+        }
     }
 }

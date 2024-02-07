@@ -21,12 +21,18 @@ namespace CityBike.WebApi.src.Database
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Journey>()
+                .HasOne(j => j.DepartureStation)
+                .WithMany(s => s.DepartureJourneys)
+                .HasForeignKey(j => j.DepartureStationId);
+
+            modelBuilder.Entity<Journey>()
+                .HasOne(j => j.ReturnStation)
+                .WithMany(s => s.ReturnJourneys)
+                .HasForeignKey(j => j.ReturnStationId);
         }
 
-
     }
-
-
 
 }

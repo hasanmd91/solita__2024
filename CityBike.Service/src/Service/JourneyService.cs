@@ -7,9 +7,8 @@ using CityBike.Service.src.DTO;
 
 namespace CityBike.Service.src.Service
 {
-    public class JourneyService(IJourneyRepo repo, IStationRepo stationRepo, IMapper mapper) : BaseService<Journey, JourneyReadDTO, JourneyCreateDTO, JourneyUpdateDTO>(repo, mapper), IJourneyService
+    public class JourneyService(IJourneyRepo repo, IMapper mapper) : BaseService<Journey, JourneyReadDTO, JourneyCreateDTO, JourneyUpdateDTO>(repo, mapper), IJourneyService
     {
-        private readonly IStationRepo _stationRepo = stationRepo;
 
         public override async Task<GetAllResponse<JourneyReadDTO>> GetAllAsync(GetAllOptions options)
         {
@@ -23,5 +22,8 @@ namespace CityBike.Service.src.Service
 
             return result;
         }
+
+
+
     }
 }
